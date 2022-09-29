@@ -1,7 +1,5 @@
 <?php
-/*
-* https://www.tutorialspoint.com/php/perform_mysql_backup_php.htm
-*/
+
 class PhpDatabaseBackup
 {
     private $dbhost;
