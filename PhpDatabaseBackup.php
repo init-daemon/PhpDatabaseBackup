@@ -1,5 +1,7 @@
 <?php
-
+/*
+* https://www.tutorialspoint.com/php/perform_mysql_backup_php.htm
+*/
 class PhpDatabaseBackup
 {
     private $dbhost;
@@ -9,11 +11,15 @@ class PhpDatabaseBackup
 
     public function __construct(array $param)
     {
-
         $this->dbhost = $param['dbhost'];
         $this->dbuser = $param['dbuser'];
         $this->dbpass = $param['dbpass'];
         $this->dbname = $param['dbname'];
+    }
+
+    public function sqlEscape(string $to_escape, string $subject)
+    {
+        return str_replace($to_escape, $to_escape . $to_escape, $subject);
     }
 
     public function mysql()
@@ -54,7 +60,7 @@ class PhpDatabaseBackup
                             if (is_numeric($row[$j])) {
                                 $sqlScript .= $row[$j];
                             } else {
-                                $sqlScript .= "'" . $row[$j] . "'";
+                                $sqlScript .= "'" . $this->sqlEscape('\'', $row[$j]) . "'";
                             }
                         } else {
                             $sqlScript .= "''";
