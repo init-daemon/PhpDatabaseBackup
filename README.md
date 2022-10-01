@@ -1,4 +1,4 @@
-# PhpDatabaseBackupà
+# PhpDatabaseBackup
 * php class allowing to backup database (mysql)
 ```php
 
